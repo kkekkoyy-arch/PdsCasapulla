@@ -6,11 +6,12 @@ var D={cit:[],veh:[],man:[],den:[],mul:[],arr:[],bac:[]};
 var RANKS=["Agente","Agente scelto","Assistente","Assistente capo","Assistente capo coordinatore","Vice sovrintendente","Sovrintendente","Sovrintendente capo","Sovrintendente capo coordinatore","Vice ispettore","Ispettore","Ispettore capo","Ispettore superiore","Sostituto commissario","Sostituto commissario coordinatore","Vice commissario","Commissario","Commissario capo","Vice questore aggiunto","Vice questore","Questore","Primo dirigente","Dirigente superiore","Dirigente generale","Direttore Generale della Pubblica Sicurezza","Admin"];
 var MIN_GESTORE="Questore";
 var ACCOUNTS=[
-{m:"PS-00",n:"Operatore demo",g:"Admin",h:""}];
+{m:"PS-00",n:"Admin Sistema",g:"Admin",h:"460e3a756e36d02f9d5da85c81db6f7653b9e21ac25452ded4fa552c4e44b863"},
+{m:"PS-01",n:"Antonio Montana",g:"Direttore Generale della Pubblica Sicurezza",h:"19ec4f477f094dc9f008615347fc1dde39e3e40b5284026aecf145e51409e57a"}];
 D.ope=ACCOUNTS;D.gra=ACCOUNTS;D.per=ACCOUNTS;D.sos=[];D.srv=[];D.fin=D.srv;
 var _om=[],_rq=[],ONLK="ps_onl",REQK="ps_req",ONLTTL=12*3600*1000;
 var DB_URL=window.__DB_URL||"";
-var BUILD="20261118-222300";
+var BUILD="20261118-223700";
 var RKEY={onl:"m",req:"id"},rpend=0,rlast=0;
 function rpost(col,items,del){
   if(!DB_URL)return; rpend++;
@@ -41,7 +42,7 @@ Object.defineProperty(D,"onl",{configurable:true,enumerable:true,
 Object.defineProperty(D,"req",{configurable:true,enumerable:true,
   get:function(){return rawList(REQK,_rq).filter(function(x){return x&&x.id})},
   set:function(v){var prev=rawList(REQK,_rq);_rq=v;try{localStorage.setItem(REQK,JSON.stringify(v))}catch(e){}rdiff("req",prev,v)}});
-var STATE={"accounts": [{"m":"PS-00","n":"Operatore demo","g":"Admin","h":""}], "sos": [], "bac": [], "cit": [], "veh": [], "man": [], "den": [], "mul": [], "arr": []};
+var STATE={"accounts": [{"m":"PS-00","n":"Admin Sistema","g":"Admin","h":"460e3a756e36d02f9d5da85c81db6f7653b9e21ac25452ded4fa552c4e44b863"}, {"m":"PS-01","n":"Antonio Montana","g":"Direttore Generale della Pubblica Sicurezza","h":"19ec4f477f094dc9f008615347fc1dde39e3e40b5284026aecf145e51409e57a"}], "sos": [], "bac": [], "cit": [], "veh": [], "man": [], "den": [], "mul": [], "arr": []};
 (function(){
   if(Array.isArray(STATE.accounts)){ACCOUNTS.length=0;STATE.accounts.forEach(function(a){ACCOUNTS.push(a)})}
   ["sos","bac","cit","veh","man","den","mul","arr"].forEach(function(k){if(Array.isArray(STATE[k]))D[k]=STATE[k]});
