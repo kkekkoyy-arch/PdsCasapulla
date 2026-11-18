@@ -7,7 +7,8 @@
 
   var demo = document.getElementById("demo");
   if (demo) {
-    demo.hidden = false;
+    var localHost = location.hostname === "localhost" || location.hostname === "127.0.0.1" || location.protocol === "file:";
+    demo.hidden = !localHost;
   }
 
   var IDLE_LIMIT = 30 * 60 * 1000;
