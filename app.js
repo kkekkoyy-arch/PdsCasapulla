@@ -10,7 +10,7 @@ var ACCOUNTS=[
 D.ope=ACCOUNTS;D.gra=ACCOUNTS;D.per=ACCOUNTS;D.sos=[];D.srv=[];D.fin=D.srv;
 var _om=[],_rq=[],ONLK="ps_onl",REQK="ps_req",ONLTTL=12*3600*1000;
 var DB_URL=window.__DB_URL||"";
-var BUILD="20261115-154909";
+var BUILD="20261118-222300";
 var RKEY={onl:"m",req:"id"},rpend=0,rlast=0;
 function rpost(col,items,del){
   if(!DB_URL)return; rpend++;
@@ -829,6 +829,7 @@ try{
 try{
   var _rm=JSON.parse(localStorage.getItem("ps_rm")||"null");
   if(_rm){
+    if(_rm.h){delete _rm.h;localStorage.setItem("ps_rm",JSON.stringify(_rm))}
     $("mat").value=_rm.m||"";$("nome").value=_rm.n||"";$("rm").checked=true;
   }
 }catch(e){}
